@@ -1,0 +1,425 @@
+/* =========================
+   CUSTOM PROPERTIES
+========================= */
+
+:root {
+    --color-negro: #000000;
+    --color-blanco: #ffffff;
+    --color-texto: #1d1d1d;
+    --color-texto-secundario: #222222;
+    --color-gris-boton: #3b3b3b;
+    --color-gris-boton-hover: #000000;
+    --color-gris-custom: #444444;
+    --color-gris-custom-hover: #222222;
+    --color-footer: #211d1d;
+    --color-borde-header: #e5e5e5;
+
+    --fuente-principal: Arial, Helvetica, sans-serif;
+
+    --header-padding: 12px 20px;
+    --logo-size: 58px;
+
+    --hero-padding: 20px;
+    --hero-title-size-mobile: 28px;
+    --hero-title-size-desktop: 35px;
+    --hero-text-size: 15px;
+
+    --footer-height-mobile: 260px;
+    --footer-height-desktop: 155px;
+    --footer-logo-size: 50px;
+    --footer-text-size: 11px;
+    --footer-title-size: 15px;
+
+    --clapper-width: 200px;
+    --clapper-text-size: 18px;
+}
+
+/* =========================
+   RESET BÁSICO
+========================= */
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: var(--fuente-principal);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* =========================
+   HEADER
+   Mobile first
+========================= */
+
+.site-header {
+    background-color: var(--color-blanco);
+    padding: var(--header-padding);
+    border-bottom: 1px solid var(--color-borde-header);
+}
+
+.header-contenido {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    object-fit: contain;
+}
+
+.header-botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.saludo-usuario {
+    color: var(--color-texto-secundario);
+    font-size: 14px;
+}
+
+.btn-header {
+    background-color: var(--color-gris-boton);
+    color: var(--color-blanco);
+    padding: 6px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.btn-header:hover {
+    background-color: var(--color-gris-boton-hover);
+    color: var(--color-blanco);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-verde {
+    background-image: url("../img/fondo-verde.png");
+    background-size: cover;
+    background-position: center;
+    padding: var(--hero-padding);
+    text-align: center;
+    color: var(--color-texto);
+}
+
+.hero-verde h1,
+.hero-verde h2 {
+    font-weight: bold;
+    font-size: var(--hero-title-size-mobile);
+}
+
+.hero-verde p {
+    font-size: var(--hero-text-size);
+}
+
+/* =========================
+   CONTENIDO GENERAL
+========================= */
+
+.contenido-pagina {
+    padding: 35px 20px;
+}
+
+/* =========================
+   BOTONES GENERALES
+========================= */
+
+.btn-dark-custom {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    border: none;
+}
+
+.btn-dark-custom:hover {
+    background-color: #333333;
+    color: var(--color-blanco);
+}
+
+.btn-grey-custom {
+    background-color: var(--color-gris-custom);
+    color: var(--color-blanco);
+    border: none;
+}
+
+.btn-grey-custom:hover {
+    background-color: var(--color-gris-custom-hover);
+    color: var(--color-blanco);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card-custom {
+    border-radius: 10px;
+}
+
+/* =========================
+   OPCIONES CINE
+   Mobile first
+========================= */
+
+.bloque-principal {
+    padding: 20px 20px 22px;
+}
+
+.opciones-cine-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    text-align: center;
+}
+
+.opcion-cine-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opcion-cine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-texto);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.clapper-img {
+    width: var(--clapper-width);
+    max-width: var(--clapper-width);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.opcion-cine:hover {
+    text-decoration: none;
+}
+
+.opcion-cine:hover .clapper-img {
+    transform: scale(1.03);
+}
+
+.texto-opcion-cine {
+    margin-top: -45px;
+    margin-bottom: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: var(--clapper-text-size);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+}
+
+/* =========================
+   FOOTER
+   Mobile first
+========================= */
+
+.footer-cine {
+    background-color: var(--color-footer);
+    background-image: url("../img/cinta-celuloide.jpg");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center;
+    color: var(--color-blanco);
+    margin-top: 0;
+    height: var(--footer-height-mobile);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.footer-contenido {
+    max-width: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: translateY(-2px);
+}
+
+.footer-izquierda {
+    text-align: center;
+}
+
+.footer-logo {
+    width: var(--footer-logo-size);
+    height: var(--footer-logo-size);
+    object-fit: contain;
+    background-color: var(--color-blanco);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.footer-email {
+    font-size: var(--footer-text-size);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: var(--color-blanco);
+    line-height: 1.1;
+}
+
+.footer-derecha {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footer-titulo {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: var(--footer-title-size);
+    line-height: 1.1;
+}
+
+.footer-derecha a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: var(--footer-text-size);
+    line-height: 1.2;
+}
+
+.footer-derecha a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   TABLET
+   600px - 900px
+========================= */
+
+@media (min-width: 600px) {
+    .header-contenido {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-botones {
+        justify-content: flex-end;
+    }
+
+    .hero-verde h1,
+    .hero-verde h2 {
+        font-size: var(--hero-title-size-desktop);
+    }
+
+    .opciones-cine-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 70px;
+    }
+
+    .opcion-cine-col {
+        width: auto;
+    }
+
+    .footer-cine {
+        height: var(--footer-height-desktop);
+    }
+
+    .footer-contenido {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+        padding: 0 60px;
+        text-align: center;
+        transform: none;
+    }
+}
+
+/* =========================
+   ESCRITORIO
+   Más de 900px
+========================= */
+
+@media (min-width: 901px) {
+    .header-contenido {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-botones {
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+    }
+
+    .hero-verde h1,
+    .hero-verde h2 {
+        font-size: var(--hero-title-size-desktop);
+    }
+
+    .bloque-principal {
+        padding: 20px 20px 22px;
+    }
+
+    .opciones-cine-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 110px;
+    }
+
+    .opcion-cine-col {
+        width: auto;
+    }
+
+    .footer-cine {
+        height: var(--footer-height-desktop);
+    }
+
+    .footer-contenido {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+        padding: 0 90px;
+        text-align: center;
+        transform: none;
+    }
+}
