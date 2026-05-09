@@ -13,14 +13,13 @@
 <div class="container contenido-pagina">
     <div class="card card-custom mb-4">
         <div class="card-body">
-            <div class="row g-4 align-items-start">
-                <div class="col-lg-6">
+            <div class="detalle-localizacion-grid">
+                <div>
                     @if(!empty($detalle->imagen_url))
                         <img
                             src="{{ $detalle->imagen_url }}"
                             alt="{{ $detalle->nombreLocalizacion }}"
-                            class="img-fluid rounded mb-3"
-                            style="width: 100%; max-height: 380px; object-fit: cover;"
+                            class="detalle-localizacion-img"
                         >
                     @endif
 
@@ -52,8 +51,8 @@
                     @endif
                 </div>
 
-                <div class="col-lg-6">
-                    <div id="map" style="height: 500px; border-radius: 10px;"></div>
+                <div class="detalle-mapa-card">
+                    <div id="map" class="detalle-mapa"></div>
                 </div>
             </div>
         </div>
@@ -140,12 +139,16 @@
     const municipio = @json($detalle->municipio, JSON_UNESCAPED_UNICODE);
     const provincia = @json($detalle->provincia, JSON_UNESCAPED_UNICODE);
 
+    // Mapa centrado en la localización seleccionada
+
     const map = L.map('map').setView([lat, lng], 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
+    // Marcador con el nombre y municipio de la localización
+    
     L.marker([lat, lng]).addTo(map)
         .bindPopup(`<strong>${nombre}</strong><br>${municipio} (${provincia})`)
         .openPopup();

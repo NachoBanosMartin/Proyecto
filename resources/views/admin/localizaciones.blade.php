@@ -123,7 +123,7 @@
                                     <td>
                                         <img src="{{ $localizacion->imagen_url }}"
                                              alt="{{ $localizacion->nombre }}"
-                                             style="width: 90px; height: 60px; object-fit: cover; border-radius: 6px;">
+                                             class="tabla-imagenes-admin">
                                     </td>
                                     <td>{{ $localizacion->nombre }}</td>
                                     <td>{{ $localizacion->municipio }}</td>

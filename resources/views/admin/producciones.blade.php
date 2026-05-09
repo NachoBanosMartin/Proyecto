@@ -122,7 +122,7 @@
                                     <td>
                                         <img src="https://pantalla-extremena-img.s3.us-east-1.amazonaws.com/{{ $produccion->imagen }}"
                                              alt="{{ $produccion->titulo }}"
-                                             style="width: 90px; height: 60px; object-fit: cover; border-radius: 6px;">
+                                             class="tabla-imagenes-admin">
                                     </td>
                                     <td>{{ $produccion->titulo }}</td>
                                     <td>{{ $produccion->tipoProduccion }}</td>

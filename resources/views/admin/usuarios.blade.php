@@ -54,11 +54,13 @@
                                     <td>{{ $usuario->email }}</td>
                                     <td>{{ $usuario->fechaRegistro }}</td>
 
-                                    <form method="POST" action="{{ route('admin.usuarios.actualizar', $usuario->idUsuario) }}">
-                                        @csrf
-                                        @method('PUT')
+                                    <td>
+                                        <form id="form-usuario-{{ $usuario->idUsuario }}"
+                                            method="POST"
+                                            action="{{ route('admin.usuarios.actualizar', $usuario->idUsuario) }}">
+                                            @csrf
+                                            @method('PUT')
 
-                                        <td>
                                             <select name="tipoUsuario" class="form-select form-select-sm">
                                                 <option value="registrado" {{ $usuario->tipoUsuario === 'registrado' ? 'selected' : '' }}>
                                                     registrado
@@ -67,31 +69,35 @@
                                                     admin
                                                 </option>
                                             </select>
-                                        </td>
+                                        </form>
+                                    </td>
 
-                                        <td>
-                                            <select name="activo" class="form-select form-select-sm">
-                                                <option value="1" {{ (int) $usuario->activo === 1 ? 'selected' : '' }}>
-                                                    Sí
-                                                </option>
-                                                <option value="0" {{ (int) $usuario->activo === 0 ? 'selected' : '' }}>
-                                                    No
-                                                </option>
-                                            </select>
-                                        </td>
+                                    <td>
+                                        <select name="activo"
+                                                form="form-usuario-{{ $usuario->idUsuario }}"
+                                                class="form-select form-select-sm">
+                                            <option value="1" {{ (int) $usuario->activo === 1 ? 'selected' : '' }}>
+                                                Sí
+                                            </option>
+                                            <option value="0" {{ (int) $usuario->activo === 0 ? 'selected' : '' }}>
+                                                No
+                                            </option>
+                                        </select>
+                                    </td>
 
-                                        <td>
-                                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                                Guardar
-                                            </button>
-                                        </td>
-                                    </form>
+                                    <td>
+                                        <button type="submit"
+                                                form="form-usuario-{{ $usuario->idUsuario }}"
+                                                class="btn btn-sm btn-outline-primary">
+                                            Guardar
+                                        </button>
+                                    </td>
 
                                     <td>
                                         @if((int) $usuario->idUsuario !== (int) session('usuario.idUsuario'))
                                             <form method="POST"
-                                                  action="{{ route('admin.usuarios.eliminar', $usuario->idUsuario) }}"
-                                                  onsubmit="return confirm('¿Seguro que quieres eliminar este usuario?');">
+                                                action="{{ route('admin.usuarios.eliminar', $usuario->idUsuario) }}"
+                                                onsubmit="return confirm('¿Seguro que quieres eliminar este usuario?');">
                                                 @csrf
                                                 @method('DELETE')
 

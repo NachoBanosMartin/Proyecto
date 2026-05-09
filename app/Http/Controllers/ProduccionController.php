@@ -9,6 +9,8 @@ class ProduccionController extends Controller
 {
     public function index(Request $request, $tipo)
     {
+        // Solo se aceptan los 2 tipos de producción usados en la app
+
         if ($tipo !== 'pelicula' && $tipo !== 'serie') {
             abort(404);
         }
@@ -17,12 +19,17 @@ class ProduccionController extends Controller
 
         $producciones = Produccion::with('produccionLocalizaciones.localizacion')
             ->where('tipoProduccion', $tipo)
+
+            // Si hay texto de busqueda se filtra por título
+            
             ->when($buscar !== '', function ($query) use ($buscar) {
                 $query->where('titulo', 'like', '%' . $buscar . '%');
             })
             ->orderBy('titulo')
             ->get();
 
+        // Se prepara un array para que js pueda pintar el mapa
+        
         $resultados = [];
 
         foreach ($producciones as $produccion) {

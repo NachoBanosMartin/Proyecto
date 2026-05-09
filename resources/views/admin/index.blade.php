@@ -11,9 +11,9 @@
 </section>
 
 <div class="container contenido-pagina">
-    <div class="row g-4">
+    <div class="admin-grid">
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Producciones</h4>
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Localizaciones</h4>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Relaciones</h4>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Comentarios</h4>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Usuarios</h4>
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h4>Estadísticas</h4>

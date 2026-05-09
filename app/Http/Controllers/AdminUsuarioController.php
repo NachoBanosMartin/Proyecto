@@ -50,6 +50,8 @@ class AdminUsuarioController extends Controller
             return redirect()->route('inicio');
         }
 
+        // Un administrador no puede eliminar su propia cuenta desde el panel
+        
         if ((int) $idUsuario === (int) session('usuario.idUsuario')) {
             return redirect()->route('admin.usuarios')
                 ->withErrors(['error' => 'No puedes eliminar tu propia cuenta de administrador.']);

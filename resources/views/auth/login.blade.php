@@ -11,8 +11,8 @@
 </section>
 
 <div class="container contenido-pagina">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div class="formulario-centrado">
+        <div class="formulario-col">
             <div class="card card-custom">
                 <div class="card-body">
                     @if($errors->any())

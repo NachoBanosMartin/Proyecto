@@ -12,8 +12,8 @@
 
 <div class="container contenido-pagina">
 
-    <div class="row g-4 mb-4">
-        <div class="col-md-6 col-lg-4">
+    <div class="estadisticas-grid mb-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h5>Total usuarios</h5>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h5>Total producciones</h5>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h5>Total localizaciones</h5>
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h5>Total comentarios</h5>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div>
             <div class="card card-custom h-100">
                 <div class="card-body">
                     <h5>Total favoritos</h5>

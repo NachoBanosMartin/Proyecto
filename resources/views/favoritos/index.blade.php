@@ -12,7 +12,7 @@
 
 <div class="container contenido-pagina">
     @if(count($favoritos) > 0)
-        <div class="row g-4">
+        <div class="favoritos-grid">
             @foreach($favoritos as $favorito)
                 @php
                     $localizacion = $favorito->localizacion;
@@ -21,13 +21,12 @@
                 @endphp
 
                 @if($localizacion && $produccion)
-                    <div class="col-md-6 col-lg-4">
+                    <div>
                         <div class="card h-100 shadow-sm">
                             <img
                                 src="{{ $localizacion->imagen_url }}"
-                                class="card-img-top"
+                                class="card-img-top favorito-card-img"
                                 alt="{{ $localizacion->nombre }}"
-                                style="height: 220px; object-fit: cover;"
                             >
 
                             <div class="card-body d-flex flex-column">
@@ -55,7 +54,7 @@
 
                                 <div class="mt-auto d-flex gap-2">
                                     <a href="{{ route('localizacion.show', ['idProduccion' => $produccion->idProduccion, 'idLocalizacion' => $localizacion->idLocalizacion]) }}"
-                                       class="btn btn-primary">
+                                    class="btn btn-primary">
                                         Ver detalle
                                     </a>
 

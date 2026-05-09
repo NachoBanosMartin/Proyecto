@@ -34,6 +34,8 @@ class FavoritoController extends Controller
             ->where('idLocalizacion', $idLocalizacion)
             ->first();
 
+        // Si ya estaba guardado como favorito, se elimina. Si no, se añade
+
         if ($favorito) {
             $favorito->delete();
         } else {
@@ -44,6 +46,8 @@ class FavoritoController extends Controller
             $nuevoFavorito->save();
         }
 
+        // Si se viene del detalle de una producción, se vuelve a esa misma pantalla
+        
         if ($idProduccion) {
             return redirect()->route('localizacion.show', [
                 'idProduccion' => $idProduccion,

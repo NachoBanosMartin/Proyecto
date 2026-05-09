@@ -15,6 +15,8 @@ class PerfilController extends Controller
 
         $usuario = Usuario::find(session('usuario.idUsuario'));
 
+        // Si el usuario de la sesión ya no existe se cierra la sesión
+
         if (!$usuario) {
             session()->forget('usuario');
             return redirect()->route('login');
@@ -49,7 +51,12 @@ class PerfilController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->email = $request->email;
 
+        // La contraseña solo se cambia si el usuario relllena alguno de los campos
+
         if ($request->password_actual || $request->password_nueva || $request->password_nueva_2) {
+
+            // Para cambiar la contraseña se exije la actual y repetir la nueva
+            
             if (!$request->password_actual || !$request->password_nueva || !$request->password_nueva_2) {
                 return back()->withErrors([
                     'password_actual' => 'Si quieres cambiar la contraseña, debes rellenar los tres campos.'
@@ -103,6 +110,8 @@ class PerfilController extends Controller
             return redirect()->route('login');
         }
 
+        // No se permite borra una cuenta administradora desde el perfil normal
+
         if ($usuario->tipoUsuario === 'admin') {
             return back()->withErrors([
                 'password_eliminar' => 'No puedes eliminar una cuenta administradora desde esta vista.'
@@ -115,6 +124,8 @@ class PerfilController extends Controller
             ]);
         }
 
+        // Se eliminan primero los datos relacionados y después la cuenta
+        
         $usuario->favoritos()->delete();
         $usuario->comentarios()->delete();
         $usuario->delete();

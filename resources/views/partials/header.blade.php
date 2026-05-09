@@ -16,7 +16,12 @@
 
                 <a href="{{ route('perfil') }}" class="btn-header">Mi perfil</a>
                 <a href="{{ route('favoritos.index') }}" class="btn-header">Mis favoritos</a>
-                <a href="{{ route('logout') }}" class="btn-header">Cerrar sesión</a>
+                <form method="POST" action="{{ route('logout') }}" class="form-logout">
+                    @csrf
+                    <button type="submit" class="btn-header btn-logout">
+                        Cerrar sesión
+                    </button>
+                </form>
             </div>
         @else
             <div class="header-botones">

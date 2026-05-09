@@ -13,8 +13,8 @@
 <div class="container contenido-pagina">
     <div class="card card-custom mb-4">
         <div class="card-body">
-            <form method="GET" action="{{ route('producciones.index', $tipo) }}" class="row g-2">
-                <div class="col-md-10">
+            <form method="GET" action="{{ route('producciones.index', $tipo) }}" class="buscador-producciones">
+                <div class="buscador-input">
                     <input
                         type="text"
                         name="buscar"
@@ -23,7 +23,8 @@
                         value="{{ $buscar }}"
                     >
                 </div>
-                <div class="col-md-2 d-grid">
+
+                <div class="buscador-boton">
                     <button type="submit" class="btn btn-grey-custom">Buscar</button>
                 </div>
             </form>
@@ -31,7 +32,7 @@
     </div>
 
     <div class="mapa-card">
-        <div id="map" style="height: 600px;"></div>
+        <div id="map" class="mapa-producciones"></div>
     </div>
 
     @if(count($resultados) === 0)
@@ -50,12 +51,18 @@
 
 @section('scripts')
 <script>
+
+    // Laravel pasa los resultados al script para poder crear los marcadores
+
     const resultados = @json($resultados, JSON_UNESCAPED_UNICODE);
+    const baseLocalizacionUrl = @json(url('/localizacion'));
     const map = L.map('map');
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    // Se agrupan las producciones por localización para no repetir marcadores en el mapa 
 
     const localizaciones = {};
 
@@ -81,24 +88,31 @@
         });
     });
 
+    // Cada marcador muestra la localización y las producciones rodadas allí
+
     Object.values(localizaciones).forEach(function(loc) {
         if (!isNaN(loc.lat) && !isNaN(loc.lng)) {
-            let contenido = `<div style="min-width:220px; max-width:220px;">`;
+            let contenido = `<div class="popup-contenido">`;
 
             if (loc.imagen_url) {
-                contenido += `<img src="${loc.imagen_url}" alt="${loc.nombre}" class="popup-img" style="height:120px;">`;
+                contenido += 
+                    `<img 
+                        src="${loc.imagen_url}" 
+                        alt="${loc.nombre}" 
+                        class="popup-img"
+                    >`;
             }
 
             contenido += `
-                <h6 style="margin-bottom:6px">${loc.nombre}</h6>
-                <p style="margin-bottom:8px; font-size:14px; color:#666;">${loc.municipio} (${loc.provincia})</p>
-                <ul style="padding-left:18px; margin:0;">
+                <h6 class="popup-titulo">${loc.nombre}</h6>
+                <p class="popup-localidad">${loc.municipio} (${loc.provincia})</p>
+                <ul class="popup-lista">
             `;
 
             loc.producciones.forEach(function(p) {
                 contenido += `
                     <li>
-                        <a href="/localizacion/${p.id}/${loc.idLocalizacion}">
+                        <a href="${baseLocalizacionUrl}/${p.id}/${loc.idLocalizacion}">
                             ${p.titulo}
                         </a>
                     </li>
@@ -119,6 +133,8 @@
         }
     });
 
+    // Se ajusta el zoom del mapa según el número de localizaciones encontradas
+    
     if (bounds.length === 1) {
         map.setView(bounds[0], 12);
     } else if (bounds.length > 1) {

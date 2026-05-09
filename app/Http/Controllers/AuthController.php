@@ -28,6 +28,9 @@ class AuthController extends Controller
         $usuario = new Usuario();
         $usuario->nombre = $request->nombre;
         $usuario->email = $request->email;
+        
+        // Se guarda la contraseña con el mismo sistema usado en la bd
+
         $usuario->password = hash('sha256', $request->password);
         $usuario->fechaRegistro = now();
         $usuario->activo = 1;
@@ -58,6 +61,8 @@ class AuthController extends Controller
             ])->withInput();
         }
 
+        // Se compara el hash de la contraseña introducida con el guardado
+
         $passwordHash = hash('sha256', $request->password);
 
         if ($usuario->password !== $passwordHash) {
@@ -66,6 +71,7 @@ class AuthController extends Controller
             ])->withInput();
         }
 
+        // Se guarda en sesión solo los datos necesarios del usuario
         session([
             'usuario' => [
                 'idUsuario' => $usuario->idUsuario,
@@ -80,6 +86,8 @@ class AuthController extends Controller
 
     public function logout()
     {
+        // Al cerrar sesión se eliminan los datos del usuario
+        
         session()->forget('usuario');
         return redirect()->route('inicio');
     }

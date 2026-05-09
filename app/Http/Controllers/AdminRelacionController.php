@@ -36,6 +36,8 @@ class AdminRelacionController extends Controller
             'idLocalizacion' => 'required|integer'
         ]);
 
+        // Evita guardar 2 veces la misma relación entre producción y localización
+        
         $existe = ProduccionLocalizacion::where('idProduccion', $request->idProduccion)
             ->where('idLocalizacion', $request->idLocalizacion)
             ->first();
