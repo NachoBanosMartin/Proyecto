@@ -11,7 +11,6 @@ class LocalizacionController extends Controller
     public function show($idProduccion, $idLocalizacion)
     {
         // Se comprueba que la producción y la localización estén realmente relacionadas
-
         $relacion = ProduccionLocalizacion::with(['produccion', 'localizacion'])
             ->where('idProduccion', $idProduccion)
             ->where('idLocalizacion', $idLocalizacion)
@@ -22,14 +21,12 @@ class LocalizacionController extends Controller
         }
 
         // Se agrupan los datos de producción y localización en un solo objeto para simplificar la vista
-
         $detalle = (object) [
             'idProduccion' => $relacion->produccion->idProduccion,
             'titulo' => $relacion->produccion->titulo,
             'tipoProduccion' => $relacion->produccion->tipoProduccion,
             'sinopsis' => $relacion->produccion->sinopsis,
             'anioEstreno' => $relacion->produccion->anioEstreno,
-            'imagen' => $relacion->produccion->imagen,
             'idLocalizacion' => $relacion->localizacion->idLocalizacion,
             'nombreLocalizacion' => $relacion->localizacion->nombre,
             'municipio' => $relacion->localizacion->municipio,
@@ -45,7 +42,6 @@ class LocalizacionController extends Controller
             ->get();
 
         // Si el usuario ha iniciado sesión, se comprueba si ya tiene guardada esta localización
-        
         $esFavorito = false;
 
         if (session('usuario')) {

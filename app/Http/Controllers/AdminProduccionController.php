@@ -28,8 +28,7 @@ class AdminProduccionController extends Controller
             'titulo' => 'required|max:200',
             'tipoProduccion' => 'required',
             'sinopsis' => 'required',
-            'anioEstreno' => 'required|integer',
-            'imagen' => 'required|max:255'
+            'anioEstreno' => 'required|integer'
         ]);
 
         $produccion = new Produccion();
@@ -37,7 +36,6 @@ class AdminProduccionController extends Controller
         $produccion->tipoProduccion = $request->tipoProduccion;
         $produccion->sinopsis = $request->sinopsis;
         $produccion->anioEstreno = $request->anioEstreno;
-        $produccion->imagen = $request->imagen;
         $produccion->save();
 
         return redirect()->route('admin.producciones')->with('success', 'Producción creada correctamente.');
@@ -69,8 +67,7 @@ class AdminProduccionController extends Controller
             'titulo' => 'required|max:200',
             'tipoProduccion' => 'required',
             'sinopsis' => 'required',
-            'anioEstreno' => 'required|integer',
-            'imagen' => 'required|max:255'
+            'anioEstreno' => 'required|integer'
         ]);
 
         $produccion = Produccion::find($idProduccion);
@@ -83,7 +80,6 @@ class AdminProduccionController extends Controller
         $produccion->tipoProduccion = $request->tipoProduccion;
         $produccion->sinopsis = $request->sinopsis;
         $produccion->anioEstreno = $request->anioEstreno;
-        $produccion->imagen = $request->imagen;
         $produccion->save();
 
         return redirect()->route('admin.producciones')->with('success', 'Producción actualizada correctamente.');

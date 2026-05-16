@@ -14,8 +14,7 @@ class Produccion extends Model
         'titulo',
         'tipoProduccion',
         'sinopsis',
-        'anioEstreno',
-        'imagen'
+        'anioEstreno'
     ];
 
     public function produccionLocalizaciones()

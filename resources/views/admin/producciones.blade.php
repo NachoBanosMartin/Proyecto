@@ -75,13 +75,6 @@
                            value="{{ old('anioEstreno', $produccionEditar->anioEstreno ?? '') }}">
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Nombre de imagen</label>
-                    <input type="text" name="imagen" class="form-control" required
-                           placeholder="ejemplo: juego-de-tronos-arco-estrella.jpg"
-                           value="{{ old('imagen', $produccionEditar->imagen ?? '') }}">
-                </div>
-
                 <button type="submit" class="btn btn-grey-custom">
                     @isset($produccionEditar)
                         Actualizar producción
@@ -108,7 +101,6 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Imagen</th>
                                 <th>Título</th>
                                 <th>Tipo</th>
                                 <th>Año</th>
@@ -119,11 +111,6 @@
                             @foreach($producciones as $produccion)
                                 <tr>
                                     <td>{{ $produccion->idProduccion }}</td>
-                                    <td>
-                                        <img src="https://pantalla-extremena-img.s3.us-east-1.amazonaws.com/{{ $produccion->imagen }}"
-                                             alt="{{ $produccion->titulo }}"
-                                             class="tabla-imagenes-admin">
-                                    </td>
                                     <td>{{ $produccion->titulo }}</td>
                                     <td>{{ $produccion->tipoProduccion }}</td>
                                     <td>{{ $produccion->anioEstreno }}</td>
